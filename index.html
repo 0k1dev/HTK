@@ -113,22 +113,20 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        .demo-placeholder {
+        .demo-media-container {
             width: 100%;
             max-width: 600px;
-            height: 400px;
-            background: #e9ecef;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 0 auto;
-            border: 3px dashed #adb5bd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .demo-placeholder p {
-            color: #6c757d;
-            font-size: 18px;
+        .demo-gif {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
         }
 
         .demo-note {
@@ -529,8 +527,10 @@
         <div class="container">
             <h2>Demo App</h2>
             <div class="demo-container">
-                <div class="demo-placeholder">
-                    <p>Đặt file demo.gif vào đây</p>
+                <div class="demo-media-container">
+                    <img src="https://raw.githubusercontent.com/0k1dev/HTK/main/demo.gif" 
+                         alt="Demo Phần mềm In Bill Bluetooth" 
+                         class="demo-gif">
                 </div>
                 <p class="demo-note">Demo thao tác thực tế trên app<br>(Không có nút tải app - App chỉ được cung cấp sau khi mua bản quyền)</p>
             </div>
@@ -657,7 +657,7 @@
             <div class="contact-cards">
                 <div class="contact-card">
                     <h3>Zalo</h3>
-                    <p>Nhắn tin qua Zalo để được tư vấn nhanh</p>
+                    <p>Nhắn tin qua Facebook để được tư vấn nhanh</p>
                     <a href="https://zalo.me/0868085409" target="_blank">Nhắn Zalo</a>
                 </div>
                 <div class="contact-card">
@@ -672,8 +672,24 @@
 
     <footer>
         <div class="container">
+            <p><strong>Phần mềm in bill Bluetooth – Giải pháp gọn nhẹ cho cửa hàng nhỏ</strong></p>
             <p><a href="chinh-sach.html">Chính sách bản quyền</a> | © 2026 In Bill Bluetooth</p>
         </div>
     </footer>
+
+    <script>
+        // Xử lý lỗi khi không tải được GIF
+        document.addEventListener('DOMContentLoaded', function() {
+            const demoGif = document.querySelector('.demo-gif');
+            if (demoGif) {
+                demoGif.onerror = function() {
+                    console.error('Không thể tải file GIF từ GitHub');
+                    // Có thể thêm placeholder tại đây nếu cần
+                    demoGif.alt = 'Không thể tải demo. Vui lòng liên hệ để xem demo trực tiếp.';
+                    demoGif.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="#e9ecef"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="#6c757d" text-anchor="middle" dy=".3em">Demo không khả dụng</text></svg>';
+                };
+            }
+        });
+    </script>
 </body>
 </html>
