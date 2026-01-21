@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần Mềm In Bill Bluetooth - Giải Pháp Cho Cửa Hàng Nhỏ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #1a3a52;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5f7f 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .demo-section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .demo-section h2 {
+            font-size: 32px;
+            color: #1a3a52;
+            margin-bottom: 15px;
+        }
+
+        .demo-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .demo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 3px dashed #adb5bd;
+        }
+
+        .demo-placeholder p {
+            color: #6c757d;
+            font-size: 18px;
+        }
+
+        .demo-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .process-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .process-section h2 {
+            font-size: 32px;
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #1a3a52;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            color: #1a3a52;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .features-section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+        }
+
+        .features-section h2 {
+            font-size: 32px;
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .feature h3 {
+            color: #1a3a52;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .target-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .target-section h2 {
+            font-size: 32px;
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .target-list {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .target-list ul {
+            list-style: none;
+        }
+
+        .target-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .target-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .pricing-section {
+            padding: 60px 20px;
+            background: #1a3a52;
+            color: white;
+        }
+
+        .pricing-section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: white;
+            color: #333;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .price-card h3 {
+            font-size: 28px;
+            color: #1a3a52;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 42px;
+            color: #ff6b35;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .price-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .price-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .copyright-warning {
+            padding: 60px 20px;
+            background: #fff3cd;
+            border-top: 5px solid #ffc107;
+            border-bottom: 5px solid #ffc107;
+        }
+
+        .copyright-warning h2 {
+            font-size: 32px;
+            color: #856404;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .warning-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .warning-content ul {
+            list-style: none;
+        }
+
+        .warning-content li {
+            padding: 15px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .warning-content li:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: #ffc107;
+            font-size: 24px;
+        }
+
+        .warning-content li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .contact-section h2 {
+            font-size: 32px;
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-card h3 {
+            font-size: 24px;
+            color: #1a3a52;
+            margin-bottom: 20px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .contact-card a:hover {
+            background: #e55a25;
+        }
+
+        .contact-note {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+        }
+
+        footer {
+            background: #1a3a52;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+
+            .process-steps,
+            .features-grid,
+            .pricing-cards,
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">📱 In Bill Bluetooth</div>
+            <nav>
+                <a href="#demo">Demo</a>
+                <a href="#tinhnang">Tính năng</a>
+                <a href="#banggia">Bảng giá</a>
+                <a href="#lienhe">Liên hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Phần Mềm In Bill Bluetooth<br>Chạm món, in hóa đơn ngay</h1>
+            <p>Giải pháp in bill nhanh gọn cho cửa hàng nhỏ.<br>Chạm món → in bill. Chỉ in khi cần.</p>
+            <a href="#lienhe" class="cta-button">Liên hệ mua bản quyền</a>
+        </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <h2>Demo App</h2>
+            <div class="demo-container">
+                <div class="demo-placeholder">
+                    <p>Đặt file demo.gif vào đây</p>
+                </div>
+                <p class="demo-note">Demo thao tác thực tế trên app<br>(Không có nút tải app - App chỉ được cung cấp sau khi mua bản quyền)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2>Quy Trình Sử Dụng</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Chạm món</h3>
+                    <p>Chạm vào món muốn bán trên màn hình điện thoại</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Kiểm tra</h3>
+                    <p>Kiểm tra tổng tiền và thông tin đơn hàng</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>In bill</h3>
+                    <p>Nhấn in → máy in bill Bluetooth hoạt động ngay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tinhnang" class="features-section">
+        <div class="container">
+            <h2>Tính Năng Chính</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>✓ In qua Bluetooth</h3>
+                    <p>In hóa đơn qua máy in bill Bluetooth, không cần dây</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Giao diện đơn giản</h3>
+                    <p>Giao diện chạm món, dễ dùng, không cần đào tạo</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Không cần POS</h3>
+                    <p>Không cần máy POS đắt tiền</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Không cần máy tính</h3>
+                    <p>Chỉ cần điện thoại và máy in Bluetooth</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Tiếng Việt 100%</h3>
+                    <p>Hỗ trợ tiếng Việt hoàn toàn, dễ sử dụng</p>
+                </div>
+                <div class="feature">
+                    <h3>✓ Gọn nhẹ</h3>
+                    <p>Giải pháp gọn nhẹ, phù hợp cửa hàng nhỏ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="target-section">
+        <div class="container">
+            <h2>Phù Hợp Với</h2>
+            <div class="target-list">
+                <ul>
+                    <li>Quán ăn, quán cà phê</li>
+                    <li>Trà sữa, đồ ăn vặt</li>
+                    <li>Shop bán lẻ nhỏ</li>
+                    <li>Bán hàng tại quầy</li>
+                    <li>Cửa hàng ít nhân viên</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="banggia" class="pricing-section">
+        <div class="container">
+            <h2>Bảng Giá</h2>
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <h3>Android</h3>
+                    <div class="price">1.200.000₫</div>
+                    <ul>
+                        <li>Bản quyền trọn đời</li>
+                        <li>Không phí hàng tháng</li>
+                        <li>Trả 1 lần, dùng lâu dài</li>
+                        <li>Hỗ trợ cài đặt</li>
+                        <li>Hướng dẫn sử dụng</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>iOS</h3>
+                    <div class="price">1.500.000₫</div>
+                    <ul>
+                        <li>Bản quyền trọn đời</li>
+                        <li>Không phí hàng tháng</li>
+                        <li>Trả 1 lần, dùng lâu dài</li>
+                        <li>Hỗ trợ cài đặt</li>
+                        <li>Hướng dẫn sử dụng</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="copyright-warning">
+        <div class="container">
+            <h2>⚠ Cảnh Báo Bản Quyền</h2>
+            <div class="warning-content">
+                <ul>
+                    <li><strong>Phần mềm có bản quyền</strong></li>
+                    <li><strong>KHÔNG chia sẻ, KHÔNG crack, KHÔNG bán lại</strong></li>
+                    <li><strong>Mỗi bản quyền chỉ dùng cho 1 cửa hàng / 1 thiết bị</strong></li>
+                    <li><strong>Vi phạm sẽ bị khóa app và ngừng hỗ trợ</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="lienhe" class="contact-section">
+        <div class="container">
+            <h2>Liên Hệ Mua Bản Quyền</h2>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h3>Facebook</h3>
+                    <p>Nhắn tin qua Facebook để được tư vấn nhanh</p>
+                    <a href="https://facebook.com/Hiy.Jon" target="_blank">Nhắn Facebook</a>
+                </div>
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p>Gửi email để được hỗ trợ chi tiết</p>
+                    <a href="mailto:dinhtanhuy547@gmail.com">Gửi Email</a>
+                </div>
+            </div>
+            <p class="contact-note">Nhắn Facebook hoặc gửi Gmail để được tư vấn & hỗ trợ cài đặt</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Phần mềm in bill Bluetooth – Giải pháp gọn nhẹ cho cửa hàng nhỏ</strong></p>
+            <p><a href="chinh-sach.html">Chính sách bản quyền</a> | © 2026 In Bill Bluetooth</p>
+        </div>
+    </footer>
+</body>
+</html>
