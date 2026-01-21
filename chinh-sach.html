@@ -137,7 +137,7 @@
             gap: 10px;
         }
 
-        .contact-section {
+        .contact-box {
             background: linear-gradient(135deg, #1a3a52 0%, #2c5f7f 100%);
             color: white;
             padding: 40px;
@@ -146,23 +146,20 @@
             text-align: center;
         }
 
-        .contact-section h3 {
+        .contact-box h3 {
             font-size: 28px;
             margin-bottom: 20px;
             color: white;
         }
 
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
         .contact-item {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
             transition: transform 0.3s;
         }
 
@@ -172,15 +169,22 @@
         }
 
         .contact-item h4 {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 15px;
             color: #ff6b35;
+        }
+
+        .contact-item p {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
         }
 
         .contact-item a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: bold;
+            font-size: 18px;
             transition: color 0.3s;
             display: inline-block;
             margin-top: 10px;
@@ -267,12 +271,12 @@
                 font-size: 20px;
             }
 
-            .contact-section {
+            .contact-box {
                 padding: 30px 20px;
             }
 
-            .contact-info {
-                grid-template-columns: 1fr;
+            .contact-item {
+                padding: 20px;
             }
         }
 
@@ -391,7 +395,7 @@
             <p>Chúng tôi cung cấp hỗ trợ kỹ thuật cho khách hàng hợp lệ:</p>
             <ul>
                 <li><strong>Thời gian:</strong> 8h00 - 17h00 (Thứ 2 - Thứ 6)</li>
-                <li><strong>Kênh hỗ trợ:</strong> Zalo và Email</li>
+                <li><strong>Kênh hỗ trợ:</strong> Facebook Messenger và Email</li>
                 <li><strong>Phản hồi:</strong> Trong vòng 2 giờ làm việc</li>
                 <li><strong>Hỗ trợ khẩn cấp:</strong> 24/7 cho sự cố nghiêm trọng</li>
             </ul>
@@ -431,32 +435,16 @@
                 <li>Thông báo trong phần mềm</li>
             </ul>
 
-            <div class="contact-section">
+            <div class="contact-box">
                 <h3>📞 Liên Hệ Với Chúng Tôi</h3>
                 <p>Nếu có bất kỳ câu hỏi nào về chính sách bản quyền, vui lòng liên hệ:</p>
                 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>Facebook</h4>
-                        <p>Nhắn tin trực tiếp để được tư vấn nhanh</p>
-                        <a href="https://zalo.me/0868085409" target="_blank" rel="noopener noreferrer">
-                            zalo ADMIN
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <h4>Email & HOT Line</h4>
-                        <p>Gửi email để được hỗ trợ chi tiết</p>
-                        <a href="mailto:dinhtanhuy547@gmail.com">
-                            dinhtanhuy547@gmail.com
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <h4>Hotline</h4>
-                        <p>Gọi điện trực tiếp để được tư vấn</p>
-                        <a href="tel:+84868085409">
-                            📞 0868 085 409
-                        </a>
-                    </div>
+                <div class="contact-item">
+                    <h4>Zalo ADMIN</h4>
+                    <p>Nhắn tin trực tiếp để được tư vấn nhanh</p>
+                    <a href="https://zalo.me/0868085409" target="_blank" rel="noopener noreferrer">
+                        Nhắn Zalo ngay
+                    </a>
                 </div>
             </div>
 
@@ -469,15 +457,14 @@
     <footer>
         <div class="container">
             <p><strong>Phần mềm in bill Bluetooth – Giải pháp gọn nhẹ cho cửa hàng nhỏ</strong></p>
-            <p>Đơn giản • Hiệu quả • Tiết kiệm chi phí</p>
             <p style="margin-top: 20px;">
-                <a href="#demo">Demo</a> | 
-                <a href="#tinhnang">Tính năng</a> | 
-                <a href="#banggia">Bảng giá</a> | 
-                <a href="#lienhe">Liên hệ</a>
+                <a href="index.html#demo">Demo</a> | 
+                <a href="index.html#tinhnang">Tính năng</a> | 
+                <a href="index.html#banggia">Bảng giá</a> | 
+                <a href="index.html#lienhe">Liên hệ</a>
             </p>
             <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
-                © 2026 Phần mềm In Bill Bluetooth. Mọi quyền được bảo hộ.<br>
+                © 2024 Phần mềm In Bill Bluetooth. Mọi quyền được bảo hộ.<br>
                 Thiết kế bởi Đinh Tấn Huy
             </p>
         </div>
