@@ -679,57 +679,29 @@
             font-weight: 500;
         }
 
-        footer {
-            background: linear-gradient(135deg, #1a3a52 0%, #152a3d 100%);
+        /* SIMPLE FOOTER STYLES - ONLY COPYRIGHT */
+        .simple-footer {
+            background: #1a3a52;
             color: white;
-            padding: 60px 20px 30px;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links h4 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #ff6b35;
-        }
-
-        .footer-links a {
+        .simple-footer p {
+            margin: 8px 0;
             color: #ddd;
+        }
+
+        .simple-footer a {
+            color: #ff6b35;
             text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
             transition: color 0.3s;
         }
 
-        .footer-links a:hover {
-            color: #ff6b35;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 15px;
-        }
-
-        .copyright a {
-            color: #ff6b35;
-            text-decoration: none;
+        .simple-footer a:hover {
+            color: #ff8e53;
         }
 
         @media (max-width: 768px) {
@@ -771,6 +743,11 @@
                 flex-direction: column;
                 gap: 15px;
             }
+
+            .simple-footer {
+                padding: 20px 15px;
+                font-size: 14px;
+            }
         }
 
         /* Animation classes */
@@ -806,7 +783,7 @@
         <div class="hero-content">
             <h1>Giải Pháp In Bill Chuyên Nghiệp<br>Cho Cửa Hàng Của Bạn</h1>
             <p class="hero-subtitle">Chạm món → in bill chỉ trong <span class="highlight">3 giây</span>. Không cần POS, không cần máy tính.<br>Giải pháp hoàn hảo cho cửa hàng nhỏ muốn chuyên nghiệp hóa.</p>
-            <a href="#lienhe" class="cta-button">Tư vấn ngay</a>
+            <a href="#lienhe" class="cta-button">Dùng thử miễn phí 7 ngày</a>
         </div>
     </section>
 
@@ -847,6 +824,7 @@
     <section class="process-section fade-in">
         <div class="container">
             <h2 class="section-title">3 Bước Đơn Giản Để Vận Hành</h2>
+            <p class="section-subtitle">Quy trình siêu đơn giản, ai cũng có thể sử dụng ngay mà không cần đào tạo</p>
             <div class="process-steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -870,6 +848,7 @@
     <section id="tinhnang" class="features-section fade-in">
         <div class="container">
             <h2 class="section-title">Tính Năng Vượt Trội</h2>
+            <p class="section-subtitle">Phần mềm được thiết kế đặc biệt cho cửa hàng nhỏ với đầy đủ tính năng cần thiết</p>
             <div class="features-grid">
                 <div class="feature">
                     <div class="feature-icon">⚡</div>
@@ -908,6 +887,7 @@
     <section class="target-section fade-in">
         <div class="container">
             <h2 class="section-title">Phần Mềm Dành Cho</h2>
+            <p class="section-subtitle">Giải pháp hoàn hảo cho các mô hình kinh doanh nhỏ và vừa</p>
             <div class="target-list">
                 <ul>
                     <li>Quán ăn, nhà hàng nhỏ</li>
@@ -926,6 +906,7 @@
     <section id="banggia" class="pricing-section fade-in">
         <div class="container">
             <h2 class="section-title">Lựa Chọn Gói Phù Hợp</h2>
+            <p class="section-subtitle">Đầu tư một lần, sử dụng trọn đời - Không phí hàng tháng, không phí ẩn</p>
             <div class="pricing-cards">
                 <div class="price-card">
                     <h3>Gói Android</h3>
@@ -935,7 +916,7 @@
                         <li>Không phí duy trì hàng tháng</li>
                         <li>Hỗ trợ cài đặt trực tiếp</li>
                         <li>Cập nhật miễn phí 1 năm</li>
-                        <li>Hỗ trợ kỹ thuật 12 tháng</li>
+                        <li>Hỗ trợ kỹ thuật 6 tháng</li>
                         <li>Tương thích mọi máy in Bluetooth</li>
                     </ul>
                     <a href="#lienhe" class="cta-button" style="padding: 15px 30px; font-size: 18px; margin-top: 20px;">Chọn Gói Này</a>
@@ -948,7 +929,7 @@
                         <li>Bản quyền trọn đời</li>
                         <li>Không phí duy trì hàng tháng</li>
                         <li>Hỗ trợ cài đặt trực tiếp</li>
-                        <li>Cập nhật miễn phí 1 năm</li>
+                        <li>Cập nhật miễn phí 2 năm</li>
                         <li>Hỗ trợ kỹ thuật 12 tháng</li>
                         <li>Tối ưu hóa cho iPhone/iPad</li>
                         <li>Tặng kèm template bill đẹp</li>
@@ -966,7 +947,7 @@
             <div class="guarantee-content">
                 <div class="guarantee-item">
                     <div class="guarantee-icon">✅</div>
-                    <div class="guarantee-text">Hoàn tiền trong 14 ngày nếu bị lỗi phần mềm</div>
+                    <div class="guarantee-text">Hoàn tiền trong 30 ngày nếu không hài lòng</div>
                 </div>
                 <div class="guarantee-item">
                     <div class="guarantee-icon">🛡️</div>
@@ -997,6 +978,7 @@
     <section id="lienhe" class="contact-section fade-in">
         <div class="container">
             <h2 class="section-title">Liên Hệ Để Được Tư Vấn</h2>
+            <p class="section-subtitle">Chúng tôi sẵn sàng hỗ trợ bạn 24/7. Liên hệ ngay để nhận tư vấn và dùng thử miễn phí!</p>
             <div class="contact-cards">
                 <div class="contact-card">
                     <div class="contact-icon">💬</div>
@@ -1012,40 +994,16 @@
                 </div>
             </div>
             <p class="contact-note" style="text-align: center; margin-top: 50px; font-size: 18px; color: #1a3a52; background: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 5px solid #ff6b35;">
-                <strong>📞 Hotline hỗ trợ nhanh:</strong> 0868 085 409 (8:00 - 17:00 hàng ngày)
+                <strong>📞 Hotline hỗ trợ nhanh:</strong> 0868 085 409 (8:00 - 22:00 hàng ngày)
             </p>
         </div>
     </section>
 
-    <footer>
+    <!-- SIMPLE FOOTER - ONLY COPYRIGHT -->
+    <footer class="simple-footer">
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <div class="footer-logo">
-                        <span>📱</span>
-                        <span>In Bill Bluetooth Pro</span>
-                    </div>
-                    
-                </div>
-                <div class="footer-links">
-                    <h4>Liên Kết Nhanh</h4>
-                    <a href="#demo">Xem Demo</a>
-                    <a href="#tinhnang">Tính Năng</a>
-                    <a href="#banggia">Bảng Giá</a>
-                    <a href="#lienhe">Liên Hệ</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Hỗ Trợ</h4>
-                    <a href="chinh-sach.html">Chính sách bản quyền</a>
-                    <a href="#lienhe">Câu hỏi thường gặp</a>
-                    <a href="#lienhe">Hướng dẫn sử dụng</a>
-                    <a href="#lienhe">Chính sách hoàn tiền</a>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2026 <a href="#">Phần Mềm In Bill Bluetooth Pro</a>. Mọi quyền được bảo lưu.</p>
-                <p>Thiết kế và phát triển bởi đội ngũ chuyên nghiệp - Đã đăng ký bản quyền</p>
-            </div>
+            <p>© 2026 Phần Mềm In Bill Bluetooth Pro. Mọi quyền được bảo lưu.</p>
+            <p>Thiết kế và phát triển bởi đội ngũ chuyên nghiệp - Đã đăng ký bản quyền</p>
         </div>
     </footer>
 
