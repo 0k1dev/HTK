@@ -13,9 +13,15 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
+            line-height: 1.6;
             color: #333;
-            background: #f8f9fa;
+            background: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
@@ -25,21 +31,19 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
         .logo {
             font-size: 24px;
             font-weight: bold;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
         }
 
-        .content {
-            background: white;
+        .main-content {
+            max-width: 900px;
             margin: 40px auto;
+            background: white;
             padding: 50px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -50,8 +54,8 @@
             font-size: 36px;
             margin-bottom: 30px;
             text-align: center;
-            border-bottom: 3px solid #ff6b35;
             padding-bottom: 20px;
+            border-bottom: 3px solid #ff6b35;
         }
 
         h2 {
@@ -60,7 +64,7 @@
             margin-top: 40px;
             margin-bottom: 20px;
             padding-left: 15px;
-            border-left: 5px solid #ff6b35;
+            border-left: 4px solid #ff6b35;
         }
 
         p {
@@ -75,105 +79,184 @@
         }
 
         ul li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-size: 16px;
         }
 
-        .warning-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            padding: 25px;
             margin: 30px 0;
-            border-radius: 5px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(255, 193, 7, 0.2);
+        }
+
+        .highlight-box h3 {
+            color: #856404;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-box {
+            background: #fee;
+            border: 2px solid #dc3545;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(220, 53, 69, 0.2);
         }
 
         .warning-box h3 {
-            color: #856404;
+            color: #dc3545;
             font-size: 20px;
             margin-bottom: 15px;
-        }
-
-        .warning-box p {
-            color: #856404;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .info-box {
-            background: #d1ecf1;
-            border-left: 5px solid #17a2b8;
-            padding: 20px;
+            background: #e7f5ff;
+            border: 2px solid #0d6efd;
+            padding: 25px;
             margin: 30px 0;
-            border-radius: 5px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(13, 110, 253, 0.2);
         }
 
         .info-box h3 {
-            color: #0c5460;
+            color: #0d6efd;
             font-size: 20px;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .info-box p {
-            color: #0c5460;
-            margin-bottom: 10px;
-        }
-
-        .contact-box {
-            background: #f8f9fa;
-            padding: 30px;
+        .contact-section {
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5f7f 100%);
+            color: white;
+            padding: 40px;
             border-radius: 10px;
-            margin-top: 40px;
+            margin-top: 50px;
             text-align: center;
-            border: 2px solid #1a3a52;
         }
 
-        .contact-box h3 {
-            color: #1a3a52;
-            font-size: 24px;
+        .contact-section h3 {
+            font-size: 28px;
             margin-bottom: 20px;
+            color: white;
         }
 
-        .contact-box p {
-            font-size: 18px;
-            margin-bottom: 10px;
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
-        .contact-box a {
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-item h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
             color: #ff6b35;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
         }
 
-        .contact-box a:hover {
-            text-decoration: underline;
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .contact-item a:hover {
+            color: #ff6b35;
         }
 
         .back-button {
             display: inline-block;
-            background: #1a3a52;
+            background: #ff6b35;
             color: white;
-            padding: 12px 30px;
+            padding: 15px 40px;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 30px;
-            transition: background 0.3s;
+            margin-top: 40px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
 
         .back-button:hover {
-            background: #2c5f7f;
+            background: #e55a25;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
         }
 
         footer {
             background: #1a3a52;
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        .date-stamp {
+            text-align: right;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        strong {
+            color: #1a3a52;
         }
 
         @media (max-width: 768px) {
-            .content {
+            .main-content {
                 padding: 30px 20px;
+                margin: 20px auto;
             }
 
             h1 {
@@ -183,165 +266,201 @@
             h2 {
                 font-size: 20px;
             }
+
+            .contact-section {
+                padding: 30px 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .highlight-box,
+            .warning-box,
+            .info-box {
+                padding: 20px;
+            }
+
+            ul {
+                padding-left: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="logo">📱 In Bill Bluetooth - Chính Sách Bản Quyền</div>
+            <div class="logo">
+                <span>📱</span>
+                <span>Phần mềm In Bill Bluetooth - Chính Sách Bản Quyền</span>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="content">
+        <div class="main-content">
             <h1>Chính Sách Bản Quyền</h1>
+            
+            <div class="date-stamp">
+                <strong>Ngày cập nhật:</strong> 21/01/2026
+            </div>
 
-            <p><strong>Ngày cập nhật:</strong> 21/01/2026</p>
-            <p>Chính sách này áp dụng cho phần mềm "In Bill Bluetooth" (sau đây gọi là "Phần mềm") được cung cấp bởi chúng tôi.</p>
+            <p>Chính sách này áp dụng cho phần mềm "In Bill Bluetooth" (sau đây gọi là "Phần mềm") được cung cấp bởi chúng tôi. Vui lòng đọc kỹ trước khi sử dụng.</p>
 
             <h2>1. Giới Thiệu Về Bản Quyền</h2>
-            <p>Phần mềm In Bill Bluetooth là sản phẩm có bản quyền, được bảo hộ bởi luật sở hữu trí tuệ Việt Nam và các điều ước quốc tế về bản quyền. Việc mua bản quyền phần mềm không có nghĩa là bạn sở hữu phần mềm, mà chỉ được cấp quyền sử dụng theo các điều khoản được quy định.</p>
+            <p>Phần mềm In Bill Bluetooth là sản phẩm có bản quyền, được bảo hộ bởi luật sở hữu trí tuệ Việt Nam và các điều ước quốc tế về bản quyền. Mọi hành vi sao chép, phân phối trái phép đều là vi phạm pháp luật.</p>
+
+            <div class="highlight-box">
+                <h3>⚠ Lưu Ý Quan Trọng</h3>
+                <p><strong>MỘT BẢN QUYỀN = MỘT CỬA HÀNG = MỘT THIẾT BỊ</strong></p>
+                <p>Mỗi bản quyền chỉ được sử dụng cho một cửa hàng và một thiết bị tại một thời điểm. Nếu bạn có nhiều cửa hàng hoặc cần sử dụng trên nhiều thiết bị, vui lòng mua thêm bản quyền.</p>
+            </div>
 
             <h2>2. Phạm Vi Bản Quyền</h2>
             <p>Khi mua bản quyền phần mềm, khách hàng được cấp quyền:</p>
             <ul>
-                <li><strong>Sử dụng cho 1 cửa hàng duy nhất</strong></li>
-                <li><strong>Cài đặt trên 1 thiết bị (điện thoại/máy tính bảng) tại một thời điểm</strong></li>
-                <li><strong>Nhận hỗ trợ kỹ thuật và cập nhật phần mềm</strong></li>
-                <li><strong>Sử dụng vĩnh viễn không giới hạn thời gian</strong></li>
+                <li><strong>Sử dụng vĩnh viễn</strong> - không giới hạn thời gian</li>
+                <li><strong>Hỗ trợ kỹ thuật miễn phí</strong> qua Facebook và Email</li>
+                <li><strong>Cập nhật phiên bản</strong> trong vòng 1 năm kể từ ngày mua</li>
+                <li><strong>In hóa đơn không giới hạn</strong> số lượng</li>
+                <li><strong>Tùy chỉnh menu món ăn</strong> theo nhu cầu cửa hàng</li>
             </ul>
-
-            <div class="warning-box">
-                <h3>⚠ Lưu Ý Quan Trọng</h3>
-                <p><strong>Một bản quyền CHỈ được sử dụng cho một cửa hàng và một thiết bị.</strong></p>
-                <p>Nếu bạn có nhiều cửa hàng hoặc muốn sử dụng trên nhiều thiết bị, bạn cần mua thêm bản quyền tương ứng.</p>
-            </div>
 
             <h2>3. Quyền Của Khách Hàng</h2>
             <p>Khách hàng được quyền:</p>
             <ul>
                 <li>Sử dụng phần mềm cho mục đích kinh doanh hợp pháp</li>
-                <li>Tùy chỉnh danh sách món ăn, giá cả phù hợp với cửa hàng</li>
-                <li>In hóa đơn không giới hạn số lượng</li>
-                <li>Nhận hỗ trợ kỹ thuật qua Facebook và Email</li>
-                <li>Nhận các bản cập nhật miễn phí (nếu có)</li>
-                <li>Chuyển đổi thiết bị sử dụng (với điều kiện thông báo trước)</li>
+                <li>Nhận hỗ trợ cài đặt và hướng dẫn sử dụng</li>
+                <li>Yêu cầu hỗ trợ kỹ thuật khi gặp sự cố</li>
+                <li>Đề xuất tính năng mới (tùy thuộc vào đánh giá của chúng tôi)</li>
+                <li>Chuyển đổi thiết bị sử dụng (tối đa 2 lần/năm)</li>
             </ul>
 
-            <h2>4. Những Điều KHÔNG Được Phép</h2>
             <div class="warning-box">
-                <h3>🚫 Các Hành Vi Vi Phạm Bản Quyền</h3>
-                <p><strong>Khách hàng TUYỆT ĐỐI KHÔNG được:</strong></p>
+                <h3>🚫 Hành Vi Bị Cấm Tuyệt Đối</h3>
+                <p><strong>KHÁCH HÀNG KHÔNG ĐƯỢC PHÉP:</strong></p>
+                <ul>
+                    <li>Chia sẻ file cài đặt với bất kỳ ai</li>
+                    <li>Crack, phá bản quyền, can thiệp vào mã nguồn</li>
+                    <li>Bán lại, cho thuê, phân phối lại phần mềm</li>
+                    <li>Đăng tải lên các nền tảng chia sẻ file</li>
+                    <li>Sử dụng 1 bản quyền cho nhiều cửa hàng</li>
+                    <li>Dịch ngược, sao chép mã nguồn phần mềm</li>
+                </ul>
             </div>
-            <ul>
-                <li><strong>Chia sẻ file cài đặt (APK/IPA) cho người khác</strong></li>
-                <li><strong>Crack, phá bản quyền, can thiệp vào mã nguồn phần mềm</strong></li>
-                <li><strong>Bán lại, cho thuê, hoặc phân phối lại phần mềm dưới mọi hình thức</strong></li>
-                <li><strong>Sử dụng một bản quyền cho nhiều cửa hàng hoặc nhiều thiết bị</strong></li>
-                <li><strong>Đăng tải file cài đặt lên các nền tảng chia sẻ (Google Drive, Telegram, v.v.)</strong></li>
-                <li><strong>Sao chép, nhân bản phần mềm dưới mọi hình thức</strong></li>
-                <li><strong>Tháo gỡ kỹ thuật, dịch ngược (reverse engineering) phần mềm</strong></li>
-            </ul>
 
-            <h2>5. Xử Lý Vi Phạm</h2>
-            <p>Trong trường hợp phát hiện vi phạm bản quyền, chúng tôi sẽ thực hiện các biện pháp sau:</p>
+            <h2>4. Xử Lý Vi Phạm</h2>
+            <p>Trong trường hợp phát hiện vi phạm bản quyền:</p>
             <ul>
-                <li><strong>Khóa bản quyền ngay lập tức</strong> - Phần mềm sẽ không thể sử dụng</li>
+                <li><strong>Khóa bản quyền ngay lập tức</strong> - phần mềm ngừng hoạt động</li>
                 <li><strong>Ngừng mọi hỗ trợ kỹ thuật</strong></li>
                 <li><strong>KHÔNG hoàn tiền</strong> trong mọi trường hợp vi phạm</li>
-                <li><strong>Liệt vào danh sách đen</strong> - Không được mua lại bản quyền</li>
-                <li><strong>Có quyền truy cứu trách nhiệm pháp lý</strong> theo quy định của pháp luật về sở hữu trí tuệ</li>
+                <li><strong>Liệt vào danh sách đen</strong> - không được mua lại</li>
+                <li><strong>Có thể khởi kiện</strong> theo luật sở hữu trí tuệ</li>
             </ul>
 
-            <div class="warning-box">
-                <h3>⚠ Cảnh Báo Nghiêm Trọng</h3>
-                <p>Vi phạm bản quyền phần mềm là hành vi vi phạm pháp luật về sở hữu trí tuệ và có thể bị xử lý theo quy định của pháp luật Việt Nam.</p>
-                <p><strong>Chúng tôi có quyền thu thập bằng chứng và khởi kiện các trường hợp vi phạm nghiêm trọng.</strong></p>
+            <div class="info-box">
+                <h3>💡 Bảo Vệ Bản Quyền</h3>
+                <p>Phần mềm được tích hợp cơ chế bảo vệ bản quyền tự động. Mọi hành vi vi phạm sẽ được ghi nhận và xử lý theo chính sách này.</p>
             </div>
 
-            <h2>6. Chính Sách Hoàn Tiền</h2>
-            <p><strong>Điều kiện hoàn tiền:</strong></p>
+            <h2>5. Chính Sách Hoàn Tiền</h2>
+            <p><strong>Điều kiện được hoàn tiền:</strong></p>
             <ul>
                 <li>Phần mềm không hoạt động và không thể khắc phục sau 7 ngày hỗ trợ</li>
-                <li>Yêu cầu hoàn tiền phải được gửi trong vòng <strong>14 ngày</strong> kể từ ngày mua</li>
-                <li>Khách hàng phải chứng minh đã hợp tác với bộ phận hỗ trợ để khắc phục sự cố</li>
+                <li>Yêu cầu trong vòng <strong>14 ngày</strong> kể từ ngày mua</li>
+                <li>Đã hợp tác với bộ phận hỗ trợ để khắc phục</li>
             </ul>
 
             <p><strong>KHÔNG hoàn tiền trong các trường hợp:</strong></p>
             <ul>
-                <li>Khách hàng thay đổi ý định không muốn sử dụng</li>
-                <li>Khách hàng mua nhầm phiên bản (Android/iOS)</li>
-                <li>Thiết bị không tương thích (đã được cảnh báo trước khi mua)</li>
+                <li>Đổi ý không muốn sử dụng</li>
+                <li>Mua nhầm phiên bản (Android/iOS)</li>
+                <li>Thiết bị không tương thích</li>
                 <li>Vi phạm bản quyền</li>
                 <li>Đã sử dụng quá 14 ngày</li>
-                <li>Yêu cầu hoàn tiền sau 14 ngày kể từ ngày mua</li>
             </ul>
 
-            <div class="info-box">
-                <h3>💡 Lưu Ý</h3>
-                <p>Trước khi mua, vui lòng trao đổi với chúng tôi qua Facebook hoặc Email để được tư vấn kỹ về tính năng, khả năng tương thích và yêu cầu sử dụng.</p>
-            </div>
-
-            <h2>7. Hỗ Trợ Kỹ Thuật</h2>
-            <p>Chúng tôi cung cấp hỗ trợ kỹ thuật miễn phí cho khách hàng đã mua bản quyền hợp lệ:</p>
+            <h2>6. Hỗ Trợ Kỹ Thuật</h2>
+            <p>Chúng tôi cung cấp hỗ trợ kỹ thuật cho khách hàng hợp lệ:</p>
             <ul>
-                <li>Hướng dẫn cài đặt và kích hoạt bản quyền</li>
-                <li>Hướng dẫn sử dụng phần mềm</li>
-                <li>Khắc phục lỗi kỹ thuật</li>
-                <li>Hướng dẫn kết nối máy in Bluetooth</li>
-                <li>Tư vấn tùy chỉnh menu món ăn</li>
+                <li><strong>Thời gian:</strong> 8h00 - 17h00 (Thứ 2 - Thứ 6)</li>
+                <li><strong>Kênh hỗ trợ:</strong> Facebook Messenger và Email</li>
+                <li><strong>Phản hồi:</strong> Trong vòng 2 giờ làm việc</li>
+                <li><strong>Hỗ trợ khẩn cấp:</strong> 24/7 cho sự cố nghiêm trọng</li>
             </ul>
 
-            <p><strong>Thời gian hỗ trợ:</strong> Trong giờ hành chính (8h00 - 17h00, từ Thứ 2 - Thứ 6)</p>
-            <p><strong>Kênh hỗ trợ:</strong> Facebook Messenger và Email</p>
-
-            <h2>8. Cập Nhật Phần Mềm</h2>
-            <p>Chúng tôi cam kết:</p>
+            <h2>7. Cập Nhật Phần Mềm</h2>
+            <p>Khách hàng được hưởng:</p>
             <ul>
-                <li>Cung cấp các bản cập nhật miễn phí để sửa lỗi và cải thiện hiệu năng</li>
-                <li>Thông báo trước khi có thay đổi lớn về tính năng</li>
-                <li>Không thu phí cho các bản cập nhật thông thường</li>
+                <li>Cập nhật sửa lỗi miễn phí</li>
+                <li>Cải thiện hiệu năng không tính phí</li>
+                <li>Thông báo trước khi có thay đổi lớn</li>
+                <li>Tính năng mới có thể được tính phí riêng</li>
             </ul>
 
-            <p><strong>Lưu ý:</strong> Các tính năng mới hoàn toàn có thể được tính phí riêng tùy theo quyết định của chúng tôi.</p>
-
-            <h2>9. Chuyển Đổi Thiết Bị</h2>
-            <p>Khách hàng có thể chuyển bản quyền sang thiết bị khác với điều kiện:</p>
+            <h2>8. Chuyển Đổi Thiết Bị</h2>
+            <p>Khách hàng có thể chuyển bản quyền sang thiết bị khác khi:</p>
             <ul>
-                <li>Thông báo cho chúng tôi trước khi chuyển đổi</li>
-                <li>Gỡ cài đặt phần mềm khỏi thiết bị cũ</li>
-                <li>Chỉ được chuyển đổi <strong>tối đa 2 lần/năm</strong></li>
+                <li>Thông báo trước cho chúng tôi</li>
+                <li>Gỡ cài đặt khỏi thiết bị cũ</li>
+                <li>Tối đa 2 lần chuyển đổi/năm</li>
                 <li>Vẫn chỉ sử dụng trên 1 thiết bị tại một thời điểm</li>
             </ul>
 
-            <h2>10. Trách Nhiệm Và Giới Hạn</h2>
+            <h2>9. Trách Nhiệm Và Giới Hạn</h2>
             <p>Chúng tôi:</p>
             <ul>
-                <li>Không chịu trách nhiệm về thiệt hại phát sinh do sử dụng sai mục đích</li>
-                <li>Không đảm bảo phần mềm hoạt động 100% trên mọi thiết bị</li>
-                <li>Không chịu trách nhiệm về mất mát dữ liệu do lỗi thiết bị hoặc người dùng</li>
+                <li>Không chịu trách nhiệm về thiệt hại do sử dụng sai mục đích</li>
+                <li>Không đảm bảo hoạt động 100% trên mọi thiết bị</li>
+                <li>Không chịu trách nhiệm về mất mát dữ liệu</li>
                 <li>Khuyến khích khách hàng sao lưu dữ liệu thường xuyên</li>
             </ul>
 
-            <h2>11. Thay Đổi Chính Sách</h2>
-            <p>Chúng tôi có quyền thay đổi chính sách bản quyền này bất cứ lúc nào. Mọi thay đổi sẽ được thông báo qua:</p>
+            <h2>10. Thay Đổi Chính Sách</h2>
+            <p>Chúng tôi có quyền thay đổi chính sách này khi cần thiết. Thay đổi sẽ có hiệu lực sau 15 ngày kể từ ngày công bố, được thông báo qua:</p>
             <ul>
                 <li>Website chính thức</li>
-                <li>Email đến khách hàng đã mua bản quyền</li>
+                <li>Email đến khách hàng</li>
                 <li>Thông báo trong phần mềm</li>
             </ul>
 
-            <p><strong>Chính sách mới sẽ có hiệu lực sau 15 ngày kể từ ngày công bố.</strong></p>
-
-            <div class="contact-box">
-                <h3>📞 Thông Tin Liên Hệ</h3>
-                <p><strong>Facebook:</strong> <a href="https://facebook.com/Hiy.Jon" target="_blank">facebook.com/Hiy.Jon</a></p>
-                <p><strong>Email:</strong> <a href="mailto:dinhtanhuy547@gmail.com">dinhtanhuy547@gmail.com</a></p>
-                <p style="margin-top: 20px; font-style: italic;">Nếu có bất kỳ thắc mắc nào về chính sách bản quyền, vui lòng liên hệ với chúng tôi.</p>
+            <div class="contact-section">
+                <h3>📞 Liên Hệ Với Chúng Tôi</h3>
+                <p>Nếu có bất kỳ câu hỏi nào về chính sách bản quyền, vui lòng liên hệ:</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Facebook</h4>
+                        <p>Nhắn tin trực tiếp để được tư vấn nhanh</p>
+                        <a href="https://facebook.com/Hiy.Jon" target="_blank" rel="noopener noreferrer">
+                            facebook.com/Hiy.Jon
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email & Zalo</h4>
+                        <p>Gửi email để được hỗ trợ chi tiết</p>
+                        <a href="mailto:dinhtanhuy547@gmail.com">
+                            dinhtanhuy547@gmail.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Hotline</h4>
+                        <p>Gọi điện trực tiếp để được tư vấn</p>
+                        <a href="tel:+84912345678">
+                            📞 0912 345 678
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px;">
+            <div class="button-container">
                 <a href="index.html" class="back-button">← Quay lại trang chủ</a>
             </div>
         </div>
@@ -350,7 +469,17 @@
     <footer>
         <div class="container">
             <p><strong>Phần mềm in bill Bluetooth – Giải pháp gọn nhẹ cho cửa hàng nhỏ</strong></p>
-            <p>© 2026 In Bill Bluetooth. All rights reserved.</p>
+            <p>Đơn giản • Hiệu quả • Tiết kiệm chi phí</p>
+            <p style="margin-top: 20px;">
+                <a href="#demo">Demo</a> | 
+                <a href="#tinhnang">Tính năng</a> | 
+                <a href="#banggia">Bảng giá</a> | 
+                <a href="#lienhe">Liên hệ</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
+                © 2024 Phần mềm In Bill Bluetooth. Mọi quyền được bảo hộ.<br>
+                Thiết kế bởi Đinh Tấn Huy
+            </p>
         </div>
     </footer>
 </body>
