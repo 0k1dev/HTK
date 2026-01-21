@@ -2,118 +2,161 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Phần Mềm In Bill Bluetooth - Giải Pháp Quản Lý Bán Hàng Thông Minh</title>
     <style>
+        /* RESET & BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f8fafc;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
         }
 
+        /* CONTAINER */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
+            width: 100%;
         }
 
+        /* HEADER */
         header {
             background: linear-gradient(135deg, #1a3a52 0%, #2c5f7f 100%);
             color: white;
-            padding: 15px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            background-color: rgba(26, 58, 82, 0.95);
         }
 
         header.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            padding: 8px 0;
         }
 
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            white-space: nowrap;
         }
 
         .logo-icon {
-            font-size: 28px;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        /* NAVIGATION FOR MOBILE */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
-            transition: all 0.3s;
             font-weight: 500;
-            position: relative;
-            padding: 5px 0;
+            font-size: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            white-space: nowrap;
         }
 
-        nav a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: #ff6b35;
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s;
+        nav a:hover, nav a.active {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ffdd00;
         }
 
-        nav a:hover:after {
-            width: 100%;
-        }
-
+        /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(26, 58, 82, 0.9), rgba(44, 95, 127, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(26, 58, 82, 0.92), rgba(44, 95, 127, 0.92)), 
+                        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: white;
-            padding: 100px 20px;
+            padding: 80px 15px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+                padding: 60px 15px;
+                min-height: 70vh;
+            }
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: clamp(28px, 5vw, 48px);
             margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.3;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
-            font-size: 22px;
+            font-size: clamp(16px, 3vw, 22px);
             margin-bottom: 30px;
             opacity: 0.95;
             font-weight: 300;
+            line-height: 1.5;
         }
 
         .highlight {
@@ -121,88 +164,54 @@
             font-weight: 600;
         }
 
+        /* BUTTONS */
         .cta-button {
             display: inline-block;
-            background: linear-gradient(to right, #ff6b35, #ff8e53);
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
             color: white;
-            padding: 18px 45px;
-            font-size: 20px;
+            padding: clamp(14px, 3vw, 18px) clamp(30px, 5vw, 45px);
+            font-size: clamp(16px, 2.5vw, 20px);
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .cta-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #ff8e53, #ff6b35);
-            transition: all 0.4s;
-            z-index: -1;
-        }
-
-        .cta-button:hover:before {
-            left: 0;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            border: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
         }
 
-        .benefits-bar {
-            background: #1a3a52;
-            color: white;
-            padding: 25px 0;
-            text-align: center;
+        .cta-button:active {
+            transform: translateY(0);
         }
 
-        .benefits-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .benefit-icon {
-            color: #ff6b35;
-            font-size: 20px;
-        }
-
-        .demo-section {
-            padding: 80px 20px;
-            background: #fff;
-            text-align: center;
+        /* SECTIONS */
+        section {
+            padding: clamp(40px, 8vw, 80px) 15px;
+            position: relative;
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: clamp(24px, 4vw, 36px);
             color: #1a3a52;
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
-            width: 70px;
+            width: clamp(40px, 10vw, 70px);
             height: 4px;
             background: #ff6b35;
             bottom: -10px;
@@ -212,19 +221,22 @@
         }
 
         .section-subtitle {
-            font-size: 18px;
+            font-size: clamp(14px, 2.5vw, 18px);
             color: #666;
             max-width: 700px;
             margin: 0 auto 40px;
+            text-align: center;
+            line-height: 1.5;
         }
 
+        /* DEMO SECTION */
         .demo-container {
             max-width: 900px;
             margin: 30px auto;
             background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: clamp(20px, 4vw, 40px);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             border: 1px solid #eaeaea;
         }
 
@@ -232,154 +244,119 @@
             width: 100%;
             max-width: 700px;
             margin: 0 auto;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .demo-gif {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 10px;
-            transition: transform 0.5s;
-        }
-
-        .demo-gif:hover {
-            transform: scale(1.02);
+            max-height: 400px;
+            object-fit: contain;
+            background: #f5f5f5;
         }
 
         .demo-note {
-            margin-top: 25px;
+            margin-top: 20px;
             font-style: italic;
             color: #666;
-            font-size: 16px;
+            font-size: clamp(14px, 2vw, 16px);
             background: #f8f9fa;
             padding: 15px;
             border-radius: 8px;
             border-left: 4px solid #ff6b35;
+            text-align: center;
         }
 
-        .process-section {
-            padding: 80px 20px;
-            background: #f8fafc;
-        }
-
+        /* PROCESS STEPS */
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 25px;
             max-width: 1100px;
-            margin: 60px auto 0;
+            margin: 40px auto 0;
         }
 
         .step {
             background: white;
-            padding: 40px 30px;
-            border-radius: 12px;
+            padding: 30px 20px;
+            border-radius: 10px;
             text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: #ff6b35;
-            transition: width 0.3s;
-        }
-
-        .step:hover:before {
-            width: 10px;
-        }
-
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-top: 4px solid #ff6b35;
         }
 
         .step-number {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #1a3a52, #2c5f7f);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 24px;
             font-weight: bold;
-            margin: 0 auto 25px;
-            box-shadow: 0 5px 15px rgba(26, 58, 82, 0.3);
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 10px rgba(26, 58, 82, 0.2);
         }
 
         .step h3 {
             color: #1a3a52;
-            margin-bottom: 15px;
-            font-size: 24px;
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .step p {
             color: #666;
-            font-size: 17px;
+            font-size: 15px;
             line-height: 1.5;
         }
 
-        .features-section {
-            padding: 80px 20px;
-            background: white;
-        }
-
+        /* FEATURES */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 20px;
             max-width: 1100px;
-            margin: 60px auto 0;
+            margin: 40px auto 0;
         }
 
         .feature {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
-            border-left: 5px solid #ff6b35;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             background: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         .feature-icon {
-            font-size: 28px;
+            font-size: 24px;
             color: #ff6b35;
             margin-bottom: 15px;
+            display: inline-block;
         }
 
         .feature h3 {
             color: #1a3a52;
-            margin-bottom: 12px;
-            font-size: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
         }
 
         .feature p {
             color: #666;
-            font-size: 16px;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
+        /* TARGET SECTION */
         .target-section {
-            padding: 80px 20px;
             background: linear-gradient(135deg, #1a3a52 0%, #2c5f7f 100%);
             color: white;
         }
@@ -388,34 +365,32 @@
             color: white;
         }
 
-        .target-section .section-title:after {
-            background: #ff6b35;
-        }
-
         .target-list {
             max-width: 800px;
-            margin: 50px auto 0;
+            margin: 40px auto 0;
             background: rgba(255, 255, 255, 0.1);
-            padding: 50px;
-            border-radius: 15px;
+            padding: clamp(25px, 5vw, 40px);
+            border-radius: 12px;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .target-list ul {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 15px;
         }
 
         .target-list li {
-            padding: 15px 0;
-            padding-left: 40px;
+            padding: 12px 0;
+            padding-left: 35px;
             position: relative;
-            font-size: 18px;
+            font-size: 16px;
             color: white;
             font-weight: 500;
+            line-height: 1.4;
         }
 
         .target-list li:before {
@@ -424,97 +399,84 @@
             left: 0;
             color: #ffdd00;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 20px;
         }
 
-        .pricing-section {
-            padding: 80px 20px;
-            background: #f8fafc;
-        }
-
+        /* PRICING */
         .pricing-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: 25px;
             max-width: 900px;
-            margin: 60px auto 0;
+            margin: 40px auto 0;
         }
 
         .price-card {
             background: white;
             color: #333;
-            padding: 50px 40px;
-            border-radius: 15px;
+            padding: 35px 25px;
+            border-radius: 12px;
             text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             position: relative;
-            overflow: hidden;
+            border: 2px solid transparent;
         }
 
         .price-card.popular {
-            transform: scale(1.05);
-            border: 2px solid #ff6b35;
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+            border-color: #ff6b35;
+            transform: scale(1.02);
         }
 
         .popular-badge {
             position: absolute;
-            top: 20px;
-            right: -35px;
+            top: 15px;
+            right: -25px;
             background: #ff6b35;
             color: white;
-            padding: 8px 40px;
+            padding: 6px 30px;
             font-weight: bold;
             transform: rotate(45deg);
-            font-size: 14px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-
-        .price-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .price-card.popular:hover {
-            transform: translateY(-15px) scale(1.05);
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .price-card h3 {
-            font-size: 28px;
+            font-size: 24px;
             color: #1a3a52;
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .price {
-            font-size: 48px;
+            font-size: 36px;
             color: #ff6b35;
-            font-weight: bold;
-            margin: 25px 0;
+            font-weight: 800;
+            margin: 20px 0;
             position: relative;
             display: inline-block;
         }
 
         .price:before {
             content: '₫';
-            font-size: 28px;
-            position: absolute;
-            left: -25px;
-            top: 5px;
+            font-size: 20px;
+            position: relative;
+            margin-right: 2px;
         }
 
         .price-card ul {
             list-style: none;
-            margin: 30px 0;
+            margin: 25px 0;
             text-align: left;
         }
 
         .price-card li {
-            padding: 12px 0;
-            padding-left: 30px;
+            padding: 10px 0;
+            padding-left: 25px;
             position: relative;
-            font-size: 17px;
+            font-size: 15px;
             border-bottom: 1px solid #f0f0f0;
+            line-height: 1.4;
         }
 
         .price-card li:last-child {
@@ -527,250 +489,209 @@
             left: 0;
             color: #4CAF50;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 16px;
         }
 
-        .copyright-warning {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
-            border-top: 1px solid #ffc107;
-            border-bottom: 1px solid #ffc107;
-        }
-
-        .warning-content {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-left: 8px solid #ffc107;
-        }
-
-        .warning-content ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        .warning-content li {
-            padding: 20px;
-            padding-left: 60px;
-            position: relative;
-            font-size: 18px;
-            color: #333;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .warning-content li:hover {
-            background: #fff8e1;
-            transform: translateX(5px);
-        }
-
-        .warning-content li:before {
-            content: "⚠";
-            position: absolute;
-            left: 20px;
-            color: #ffc107;
-            font-size: 28px;
-        }
-
-        .contact-section {
-            padding: 80px 20px;
-            background: white;
-        }
-
+        /* CONTACT */
         .contact-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 25px;
             max-width: 900px;
-            margin: 60px auto 0;
+            margin: 40px auto 0;
         }
 
         .contact-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 50px 40px;
-            border-radius: 15px;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 12px;
             text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid #eaeaea;
         }
 
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            background: white;
-            border-color: #ff6b35;
-        }
-
         .contact-icon {
-            font-size: 50px;
+            font-size: 40px;
             margin-bottom: 20px;
             color: #1a3a52;
         }
 
         .contact-card h3 {
-            font-size: 26px;
+            font-size: 22px;
             color: #1a3a52;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .contact-card p {
             color: #666;
-            font-size: 17px;
+            font-size: 15px;
             margin-bottom: 25px;
             line-height: 1.5;
         }
 
-        .contact-card a {
-            display: inline-block;
-            background: linear-gradient(to right, #ff6b35, #ff8e53);
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 17px;
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .contact-card a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
-        }
-
-        .guarantee-section {
-            padding: 60px 20px;
-            background: #f0f9ff;
-            text-align: center;
-        }
-
-        .guarantee-content {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            max-width: 1000px;
-            margin: 40px auto 0;
-        }
-
-        .guarantee-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 250px;
-        }
-
-        .guarantee-icon {
-            font-size: 40px;
-            color: #4CAF50;
-            margin-bottom: 15px;
-        }
-
-        .guarantee-text {
-            font-size: 18px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        /* SIMPLE FOOTER STYLES - ONLY COPYRIGHT */
+        /* SIMPLE FOOTER */
         .simple-footer {
             background: #1a3a52;
             color: white;
-            padding: 25px 0;
+            padding: 25px 15px;
             text-align: center;
-            font-size: 15px;
+            font-size: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .simple-footer p {
             margin: 8px 0;
             color: #ddd;
+            line-height: 1.5;
         }
 
-        .simple-footer a {
-            color: #ff6b35;
-            text-decoration: none;
-            transition: color 0.3s;
+        /* UTILITY CLASSES */
+        .text-center {
+            text-align: center;
         }
 
-        .simple-footer a:hover {
-            color: #ff8e53;
+        .mb-20 {
+            margin-bottom: 20px;
         }
 
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        /* MOBILE MENU */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .section-title {
-                font-size: 30px;
+            .nav-toggle {
+                display: block;
+                z-index: 1001;
             }
 
             nav {
-                width: 100%;
-                margin-top: 15px;
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 15px;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: #1a3a52;
+                flex-direction: column;
+                padding: 80px 20px 20px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            }
+
+            nav.active {
+                right: 0;
             }
 
             nav a {
-                margin: 0;
-                font-size: 15px;
+                padding: 15px;
+                text-align: left;
+                border-radius: 8px;
+                margin: 5px 0;
             }
 
-            .price-card.popular {
-                transform: scale(1);
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
             }
 
-            .price-card.popular:hover {
-                transform: translateY(-15px);
+            .overlay.active {
+                display: block;
             }
 
-            .benefits-container {
-                flex-direction: column;
-                gap: 15px;
+            .logo {
+                font-size: 16px;
             }
 
-            .simple-footer {
+            .step, .feature, .price-card, .contact-card {
                 padding: 20px 15px;
-                font-size: 14px;
             }
         }
 
-        /* Animation classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+        /* SAFARI SPECIFIC FIXES */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            input, button {
+                font-size: 16px; /* Prevents zoom on focus in Safari */
+            }
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* ANDROID CHROME FIXES */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            select,
+            textarea,
+            input {
+                font-size: 16px;
+            }
+        }
+
+        /* HIGH RESOLUTION DISPLAYS */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .section-title:after {
+                height: 3px;
+            }
+        }
+
+        /* DARK MODE SUPPORT */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            .step, .feature, .price-card, .contact-card, .demo-container {
+                background: #1e1e1e;
+                color: #e0e0e0;
+                border-color: #333;
+            }
+            
+            .section-title {
+                color: #e0e0e0;
+            }
+            
+            .feature h3, .step h3, .price-card h3, .contact-card h3 {
+                color: #e0e0e0;
+            }
+            
+            .feature p, .step p, .price-card p, .contact-card p {
+                color: #b0b0b0;
+            }
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            .cta-button, nav, .hero {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
     <header id="main-header">
         <div class="container">
             <div class="logo">
                 <span class="logo-icon">📱</span>
                 <span>In Bill Bluetooth Pro</span>
             </div>
-            <nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                ☰
+            </button>
+            <nav id="mainNav">
                 <a href="#demo">Demo</a>
                 <a href="#tinhnang">Tính năng</a>
                 <a href="#banggia">Bảng giá</a>
@@ -787,26 +708,7 @@
         </div>
     </section>
 
-    <section class="benefits-bar">
-        <div class="container">
-            <div class="benefits-container">
-                <div class="benefit-item">
-                    <span class="benefit-icon">✓</span>
-                    <span>Tiết kiệm 80% thời gian tính bill</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">✓</span>
-                    <span>Không cần đầu tư máy POS</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">✓</span>
-                    <span>Dễ sử dụng, không cần đào tạo</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo" class="demo-section fade-in">
+    <section id="demo" class="demo-section">
         <div class="container">
             <h2 class="section-title">Xem Ứng Dụng Hoạt Động</h2>
             <p class="section-subtitle">Xem demo thực tế cách phần mềm giúp bạn bán hàng nhanh chóng và chuyên nghiệp</p>
@@ -814,14 +716,15 @@
                 <div class="demo-media-container">
                     <img src="https://raw.githubusercontent.com/0k1dev/HTK/main/demo.gif" 
                          alt="Demo Phần mềm In Bill Bluetooth" 
-                         class="demo-gif">
+                         class="demo-gif"
+                         loading="lazy">
                 </div>
                 <p class="demo-note">Chỉ cần chạm món và in - Đơn giản, nhanh chóng, hiệu quả. App chỉ được cung cấp sau khi đăng ký bản quyền.</p>
             </div>
         </div>
     </section>
 
-    <section class="process-section fade-in">
+    <section class="process-section">
         <div class="container">
             <h2 class="section-title">3 Bước Đơn Giản Để Vận Hành</h2>
             <p class="section-subtitle">Quy trình siêu đơn giản, ai cũng có thể sử dụng ngay mà không cần đào tạo</p>
@@ -845,7 +748,7 @@
         </div>
     </section>
 
-    <section id="tinhnang" class="features-section fade-in">
+    <section id="tinhnang" class="features-section">
         <div class="container">
             <h2 class="section-title">Tính Năng Vượt Trội</h2>
             <p class="section-subtitle">Phần mềm được thiết kế đặc biệt cho cửa hàng nhỏ với đầy đủ tính năng cần thiết</p>
@@ -884,7 +787,7 @@
         </div>
     </section>
 
-    <section class="target-section fade-in">
+    <section class="target-section">
         <div class="container">
             <h2 class="section-title">Phần Mềm Dành Cho</h2>
             <p class="section-subtitle">Giải pháp hoàn hảo cho các mô hình kinh doanh nhỏ và vừa</p>
@@ -903,7 +806,7 @@
         </div>
     </section>
 
-    <section id="banggia" class="pricing-section fade-in">
+    <section id="banggia" class="pricing-section">
         <div class="container">
             <h2 class="section-title">Lựa Chọn Gói Phù Hợp</h2>
             <p class="section-subtitle">Đầu tư một lần, sử dụng trọn đời - Không phí hàng tháng, không phí ẩn</p>
@@ -919,7 +822,7 @@
                         <li>Hỗ trợ kỹ thuật 6 tháng</li>
                         <li>Tương thích mọi máy in Bluetooth</li>
                     </ul>
-                    <a href="#lienhe" class="cta-button" style="padding: 15px 30px; font-size: 18px; margin-top: 20px;">Chọn Gói Này</a>
+                    <a href="#lienhe" class="cta-button" style="padding: 12px 25px; font-size: 16px; margin-top: 15px; display: inline-block;">Chọn Gói Này</a>
                 </div>
                 <div class="price-card popular">
                     <div class="popular-badge">PHỔ BIẾN</div>
@@ -934,48 +837,14 @@
                         <li>Tối ưu hóa cho iPhone/iPad</li>
                         <li>Tặng kèm template bill đẹp</li>
                     </ul>
-                    <a href="#lienhe" class="cta-button" style="padding: 15px 30px; font-size: 18px; margin-top: 20px;">Chọn Gói Này</a>
+                    <a href="#lienhe" class="cta-button" style="padding: 12px 25px; font-size: 16px; margin-top: 15px; display: inline-block;">Chọn Gói Này</a>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 30px; color: #666; font-size: 16px;">💡 <strong>Ưu đãi:</strong> Đặt mua 2 gói trở lên được giảm thêm 10%</p>
+            <p class="text-center mb-30" style="color: #666; font-size: 15px; margin-top: 25px;">💡 <strong>Ưu đãi:</strong> Đặt mua 2 gói trở lên được giảm thêm 10%</p>
         </div>
     </section>
 
-    <section class="guarantee-section fade-in">
-        <div class="container">
-            <h2 class="section-title">Cam Kết Từ Chúng Tôi</h2>
-            <div class="guarantee-content">
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">✅</div>
-                    <div class="guarantee-text">Hoàn tiền trong 30 ngày nếu không hài lòng</div>
-                </div>
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">🛡️</div>
-                    <div class="guarantee-text">Bảo hành phần mềm trọn đời</div>
-                </div>
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">🎓</div>
-                    <div class="guarantee-text">Hỗ trợ đào tạo sử dụng miễn phí</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="copyright-warning fade-in">
-        <div class="container">
-            <h2 class="section-title">Chính Sách Bản Quyền Nghiêm Túc</h2>
-            <div class="warning-content">
-                <ul>
-                    <li><strong>Mỗi bản quyền chỉ dùng cho 1 cửa hàng / 1 thiết bị</strong> - Không chia sẻ giữa nhiều cửa hàng</li>
-                    <li><strong>KHÔNG crack, KHÔNG bán lại, KHÔNG chia sẻ</strong> - Vi phạm sẽ bị khóa vĩnh viễn</li>
-                    <li><strong>Hỗ trợ kỹ thuật chỉ dành cho khách hàng mua bản quyền chính thức</strong></li>
-                    <li><strong>Mọi hành vi vi phạm bản quyền sẽ bị xử lý theo pháp luật</strong></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="lienhe" class="contact-section fade-in">
+    <section id="lienhe" class="contact-section">
         <div class="container">
             <h2 class="section-title">Liên Hệ Để Được Tư Vấn</h2>
             <p class="section-subtitle">Chúng tôi sẵn sàng hỗ trợ bạn 24/7. Liên hệ ngay để nhận tư vấn và dùng thử miễn phí!</p>
@@ -984,22 +853,22 @@
                     <div class="contact-icon">💬</div>
                     <h3>Zalo Tư Vấn</h3>
                     <p>Nhắn tin trực tiếp qua Zalo để được tư vấn nhanh và hỗ trợ kỹ thuật</p>
-                    <a href="https://zalo.me/0868085409" target="_blank">Chat ngay trên Zalo</a>
+                    <a href="https://zalo.me/0868085409" target="_blank" class="cta-button" style="padding: 12px 25px; font-size: 16px;">Chat ngay trên Zalo</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">📧</div>
                     <h3>Email Chuyên Nghiệp</h3>
                     <p>Gửi email để nhận tài liệu chi tiết, báo giá và hợp đồng bản quyền</p>
-                    <a href="mailto:dinhtanhuy547@gmail.com">Gửi email ngay</a>
+                    <a href="mailto:dinhtanhuy547@gmail.com" class="cta-button" style="padding: 12px 25px; font-size: 16px;">Gửi email ngay</a>
                 </div>
             </div>
-            <p class="contact-note" style="text-align: center; margin-top: 50px; font-size: 18px; color: #1a3a52; background: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 5px solid #ff6b35;">
+            <p class="demo-note text-center" style="margin-top: 40px;">
                 <strong>📞 Hotline hỗ trợ nhanh:</strong> 0868 085 409 (8:00 - 22:00 hàng ngày)
             </p>
         </div>
     </section>
 
-    <!-- SIMPLE FOOTER - ONLY COPYRIGHT -->
+    <!-- SIMPLE FOOTER -->
     <footer class="simple-footer">
         <div class="container">
             <p>© 2026 Phần Mềm In Bill Bluetooth Pro. Mọi quyền được bảo lưu.</p>
@@ -1008,40 +877,51 @@
     </footer>
 
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Scroll animation
+        // DOM Ready
         document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
+            // Mobile Navigation
+            const navToggle = document.getElementById('navToggle');
+            const mainNav = document.getElementById('mainNav');
+            const overlay = document.getElementById('overlay');
             
-            const fadeInOnScroll = function() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
+            if (navToggle && mainNav) {
+                navToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    navToggle.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+                });
+                
+                overlay.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    navToggle.textContent = '☰';
+                });
+                
+                // Close menu when clicking on links
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mainNav.classList.remove('active');
+                        overlay.classList.remove('active');
+                        navToggle.textContent = '☰';
+                    });
+                });
+            }
+            
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
                     }
                 });
-            };
+            }
             
-            // Initial check
-            fadeInOnScroll();
-            
-            // Check on scroll
-            window.addEventListener('scroll', fadeInOnScroll);
-            
-            // Smooth scrolling for anchor links
+            // Smooth scrolling with offset for fixed header
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     
                     const targetId = this.getAttribute('href');
@@ -1049,25 +929,81 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
+                        const headerHeight = header ? header.offsetHeight : 80;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetPosition,
                             behavior: 'smooth'
                         });
                     }
                 });
             });
             
-            // Handle GIF error
+            // Handle GIF error with better fallback
             const demoGif = document.querySelector('.demo-gif');
             if (demoGif) {
-                demoGif.onerror = function() {
-                    console.log('Không thể tải file GIF từ GitHub');
-                    // Fallback placeholder
-                    demoGif.alt = 'Demo không khả dụng. Vui lòng liên hệ để xem demo trực tiếp.';
-                    demoGif.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400" viewBox="0 0 700 400"><rect width="100%" height="100%" fill="#1a3a52"/><text x="50%" y="45%" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dy=".3em">DEMO PHẦN MỀM IN BILL BLUETOOTH</text><text x="50%" y="55%" font-family="Arial" font-size="18" fill="#ffdd00" text-anchor="middle" dy=".3em">Liên hệ để xem demo trực tiếp</text></svg>';
-                };
+                demoGif.addEventListener('error', function() {
+                    console.log('Không thể tải GIF, sử dụng fallback image');
+                    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400" viewBox="0 0 700 400"><rect width="100%" height="100%" fill="%231a3a52"/><text x="50%" y="40%" font-family="Arial" font-size="24" fill="white" text-anchor="middle">DEMO PHẦN MỀM</text><text x="50%" y="50%" font-family="Arial" font-size="24" fill="white" text-anchor="middle">IN BILL BLUETOOTH</text><text x="50%" y="65%" font-family="Arial" font-size="18" fill="%23ffdd00" text-anchor="middle">Liên hệ để xem demo trực tiếp</text></svg>';
+                    this.alt = 'Demo không khả dụng. Vui lòng liên hệ để xem demo trực tiếp.';
+                });
+                
+                // Lazy loading
+                demoGif.loading = 'lazy';
+            }
+            
+            // Touch device optimizations
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+                
+                // Improve button tap feedback
+                const buttons = document.querySelectorAll('a, button');
+                buttons.forEach(btn => {
+                    btn.addEventListener('touchstart', function() {
+                        this.style.opacity = '0.8';
+                    });
+                    
+                    btn.addEventListener('touchend', function() {
+                        this.style.opacity = '1';
+                    });
+                });
+            }
+            
+            // Prevent zoom on input focus in iOS
+            if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                const inputs = document.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    input.addEventListener('focus', function() {
+                        this.style.fontSize = '16px';
+                    });
+                });
+            }
+            
+            // Performance optimization: Defer non-critical CSS
+            const loadDeferredStyles = function() {
+                const deferredStyles = document.querySelectorAll('style[data-defer]');
+                deferredStyles.forEach(style => {
+                    style.removeAttribute('data-defer');
+                });
+            };
+            
+            // Load deferred styles after page load
+            if (document.readyState === 'complete') {
+                loadDeferredStyles();
+            } else {
+                window.addEventListener('load', loadDeferredStyles);
             }
         });
+        
+        // Service Worker Registration (Optional - for PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function(error) {
+                    console.log('ServiceWorker registration failed:', error);
+                });
+            });
+        }
     </script>
 </body>
 </html>
